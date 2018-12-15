@@ -1,29 +1,31 @@
-# vuedemo
+# team-manage
 
-## Project setup
+vue 实现的一个纯静态团队展示网站。
+
+## 项目安装
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### 编译与热部署该项目
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### 编译最小化生产环境
 ```
 npm run build
 ```
 
-### Run your tests
+### 运行单元测试
 ```
 npm run test
 ```
 
-### Lints and fixes files
+### Lints 与代码修正
 ```
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### 自定义参数
+点击此处自定义参数与设置[Configuration Reference](https://cli.vuejs.org/config/).
