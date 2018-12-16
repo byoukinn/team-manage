@@ -6,8 +6,6 @@
 		<div class="router-view">
 			<router-view/>
 		</div>
-		
-
 	</div>
 </template>
 
@@ -21,6 +19,7 @@ export default {
 			routerList: [
 				{text:'主233页', path: '/'},
 				{text:'关于', path: '/about'},
+				{text:'DEMO页面', path: '/Demo'},
 				{text:'老师简介', path: '/Teachers'},
 			],
 		}

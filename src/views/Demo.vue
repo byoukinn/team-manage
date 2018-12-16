@@ -8,10 +8,15 @@
                 <li v-for="item in list"> {{item.name}} </li>
             </ul>
         </transition-group>
+        <LabelBar label='团队简介' url='#'><HelloWorld msg='团队简介下面的' /></LabelBar>
+        
     </div>
 </template>
 
 <script>
+import LabelBar from '@/components/LabelBar.vue'
+import HelloWorld from '@/components/HelloWorld.vue'
+
 export default {
     name: 'Demo', 
     data () {
@@ -35,7 +40,11 @@ export default {
     created: function() {
         this.play()
     },
-} 
+    components: {
+        HelloWorld,
+        LabelBar,
+    }, 
+}
 </script>
 
 
