@@ -108,7 +108,6 @@
     }
 
     .navbar {
-        width: 70%;
         margin: 0 auto;
     }
 
@@ -151,6 +150,9 @@
     .navbar ul li ul li a {
         height: 50px;
         line-height: 50px;
-        font-size: 14px;
+    }
+
+    a {
+        font-size: 12px;
     }
 </style>
