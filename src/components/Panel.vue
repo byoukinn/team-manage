@@ -1,7 +1,12 @@
 <template>
-    <div class="panel">
-        <div>
-            <h3>{{ title }}</h3>
+    <div class="panel-top">
+        <div class="panel-row">
+            <div class="panel-title">
+                <h3>{{ title }}</h3>
+            </div>
+            <div class="panel-more" v-if="more">
+                <a :href="more">more</a>
+            </div>
         </div>
         <slot></slot>
     </div>
@@ -10,26 +15,38 @@
 <script>
     export default {
         name: 'Panel',
-        props: ['title'],
-
+        props: ['title', 'more'],
     }
 </script>
 
 <style scoped>
-    .panel {
+    .panel-top {
         overflow: hidden;
+        width: 100%;
         border: 1px solid #dbdbdb;
         background-color: #fff;
         display: inline-flex;
+        align-items: baseline;
         flex-flow: column nowrap;
     }
-
-    .panel h3 {
+    .panel-row {
+        width: 100%;
+        box-sizing: border-box;
+        align-items: baseline;
+        display: flex;
         text-align: left;
-        padding: 10px 20px;
         background-color: #f4f4f4;
-        font-size: 18px;
         color: #025e3a;
     }
-
+    .panel-row>div {
+        width: 50%;
+    }
+    .panel-row>div>h3, .row>div>a {
+        font-size: 18px;
+        margin: 10px auto;
+        padding: 0px 20px;
+    }
+    .panel-more {
+        text-align: right;
+    }
 </style>
