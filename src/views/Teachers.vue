@@ -1,7 +1,7 @@
 <template>
     <div class="row">
-        <nav  class="col-xs-3">
-            <Panel  title='骨干师资' more='#'>
+        <nav  class="col-xs-3" style="height: 600px">
+            <Panel  title='骨干师资' more='#' >
                 <Conveyor  :datas='members' column='true' />
             </Panel>
         </nav>
