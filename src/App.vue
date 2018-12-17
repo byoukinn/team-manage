@@ -1,7 +1,7 @@
 <template>
 	<div id="app">
 		<div id="nav">
-			<router-link v-for="item in routerList" :to="item.path"> {{ item.text }} </router-link> 
+			<router-link v-for="i in routerList" :key="i.id" :to="i.path"> {{ i.text }} </router-link> 
 		</div>
 		<div class="router-view">
 			<router-view/>
@@ -10,7 +10,6 @@
 </template>
 
 <script>
-import Teachers from '@/views/Teachers.vue'
 
 export default {
 	name: 'app',
@@ -24,9 +23,6 @@ export default {
 			],
 		}
 	},
-	components: {
-		Teachers
-	},
 	methods: {
 		democlick: function() {
 			console.log('进来了', this.demolist)
@@ -36,9 +32,8 @@ export default {
 }
 </script>
 
-
-
 <style>
+
 #app {
 	font-family: 'Avenir', Helvetica, Arial, sans-serif;
 	-webkit-font-smoothing: antialiased;
@@ -57,7 +52,6 @@ export default {
 #nav a.router-link-exact-active {
 	color: #42b983;
 }
-
 div.router-view {
 	display: flex;
 	flex-wrap: wrap;

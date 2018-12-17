@@ -3,53 +3,92 @@
 <template>
     <div>
         <h3>这里是Demo</h3>
-        <transition-group>
-            <ul>
-                <li v-for="item in list"> {{item.name}} </li>
-            </ul>
-        </transition-group>
-        <LabelBar label='团队简介' url='#'><HelloWorld msg='团队简介下面的' /></LabelBar>
-        
+
+            <Panel title='团队简介'  class="demo-height">
+                <Conveyor  :datas='conveyorData' :column='false' />
+            </Panel>
+
+
     </div>
 </template>
 
 <script>
-import LabelBar from '@/components/LabelBar.vue'
-import HelloWorld from '@/components/HelloWorld.vue'
+    import Panel from '@/components/Panel.vue'
+    import Conveyor from '@/components/Conveyor.vue'
 
-export default {
-    name: 'Demo', 
-    data () {
-        return {
-            timer: null,
+    export default {
+        name: 'Demo',
+        data() {
+            return {
+                timer: null,
+                conveyorData: [{
+                        img: require("@/assets/cloud.png"),
+                        desc: 'hello',
+                    },
+                    {
+                        img: require("@/assets/cloud.png"),
+                        desc: 'xxx',
+                    },
+                    {
+                        img: require("@/assets/cloud.png"),
+                        desc: 'qqq',
+                    },
+                    {
+                        img: require("@/assets/cloud.png"),
+                        desc: 'www',
+                    },
+                    {
+                        img: require("@/assets/logo.png"),
+                        desc: 'eee',
+                    },
+                    {
+                        img: require("@/assets/logo.png"),
+                        desc: 'rrr',
+                    },
+                    {
+                        img: require("@/assets/logo.png"),
+                        desc: 'tttt',
+                    },
+                    {
+                        img: require("@/assets/logo.png"),
+                        desc: 'yyyy',
+                    },
+                    {
+                        img: require("@/assets/logo.png"),
+                        desc: 'uuuu',
+                    },
+                ],
 
-        }
-    },
-    props: ['list'],
-    methods: {
-        runApp: function() {
-              
+            }
         },
-        play: function() {
-            this.timer = setInterval(this.runApp, 1000/60)
+        props: ['list'],
+        methods: {
+            runApp: function () {
+
+            },
+            play: function () {
+                this.timer = setInterval(this.runApp, 1000 / 60)
+            },
+            pause: function () {
+                clearInterval(this.timer)
+            },
+
         },
-        pause: function() {
-            clearInterval(this.timer) 
+        created: function () {},
+        components: {
+            Panel,
+            Conveyor,
         },
-    },
-    created: function() {
-        this.play()
-    },
-    components: {
-        HelloWorld,
-        LabelBar,
-    }, 
-}
+    }
 </script>
 
 
-<style>
-    div.d233 {
-        background: aliceblue;
+<style scoped>
+    div {
+        width: 100%;
     }
+    .demo-height {
+        height: 300px;
+    }
+
 </style>

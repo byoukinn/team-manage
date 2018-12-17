@@ -1,95 +1,64 @@
 <template>
-    <div id="demo" class="conveyor-img" @mouseover="pause()" @mouseout="play()">
-        <div class="conveyor-bar" v-if="!column">
-            <div id="demo1">
-                <div class="conveyor-piece" v-for="item in conveyorData" :key="item.id">
-                    <img :src="item.src" alt="">
-                    <p>{{ item.desc }}</p>
-                </div>
-            </div>
-            <div id="demo2"></div>
+    <div id="conveyor" class="conveyor-top" @mouseover="pause()" @mouseout="play()">
+        <div :class="{'conveyor-bar' : !this.column}">
+            <Conveyor-Col v-if="column" :datas='datas' />
+            <Conveyor-Row v-else :datas='datas' />
+            <div id="canvas2"></div>
         </div>
     </div>
 </template>
 
+
 <script>
+    import ConveyorCol from '@/components/Conveyor/ConveyorCol.vue'
+    import ConveyorRow from '@/components/Conveyor/ConveyorRow.vue'
+    // FIXME: 刷新后，宽度是不预期的，被父节点定了。
+    // FIXME: PANEL是他的父节点。
     export default {
         name: 'Conveyor',
+        props: ['datas', 'column'],
         data: function () {
             return {
                 /**
                  * 轮播图的 路径: src， 描述: desc
                  * 图片需要require()方法请求进来
-                 */
-                conveyorData: [
-                    {
-                        src: require("@/assets/cloud.png"),
-                        desc: 'hello',
-                    },
-                    {
-                        src: require("@/assets/cloud.png"),
-                        desc: 'xxx',
-                    },
-                    {
-                        src: require("@/assets/cloud.png"),
-                        desc: 'qqq',
-                    },
-                    {
-                        src: require("@/assets/cloud.png"),
-                        desc: 'www',
-                    },
-                    {
-                        src: require("@/assets/logo.png"),
-                        desc: 'eee',
-                    },
-                    {
-                        src: require("@/assets/logo.png"),
-                        desc: 'rrr',
-                    },
-                    {
-                        src: require("@/assets/logo.png"),
-                        desc: 'tttt',
-                    },
-                    {
-                        src: require("@/assets/logo.png"),
-                        desc: 'yyyy',
-                    },
-                    {
-                        src: require("@/assets/logo.png"),
-                        desc: 'uuuu',
-                    },
-                ],
-                demo: null,
-                demo1: null,
-                demo2: null,
+                 * */
+                convey: null,
+                c1: null,
+                c2: null,
                 ms: null,
                 timer: null,
+                offset: '',
+                scroll: '',
+
                 /**
                  * true 为垂直向上滚动， false 为水平向左滚动 
                  */
-                column: false,
             }
         },
         mounted: function () {
             /**
              * 轮播图
              */
-            this.demo = document.getElementById("demo");
-            this.demo1 = document.getElementById("demo1");
-            this.demo2 = document.getElementById("demo2");
-            this.ms = 6;
-            this.demo2.innerHTML = this.demo1.innerHTML;
+            this.convey = document.getElementById("conveyor");
+            this.c1 = document.getElementById("canvas1");
+            this.c2 = document.getElementById("canvas2");
+            this.ms = 1;
+            this.c2.innerHTML = this.c1.innerHTML;
             this.timer = null;
+            var className = this.column ? 'vertical' : 'horizon';
+            this.c1.className = this.c1.className + " " + className;
+            this.c2.className = this.c2.className + " " + className;
+            this.offset = this.column ? 'offsetHeight' : 'offsetWidth';
+            this.scroll = this.column ? 'scrollTop' : 'scrollLeft';
             this.move();
         },
         methods: {
             move: function () {
-                var offset = this.column ? 'offseHeight' : 'offsetWidth';
-                var scroll = this.column ? 'scrollTop' : 'scrollLeft';
-                if (this.demo2[offset] - this.demo[scroll] <= 0) {
-                    this.demo[scroll] -= this.demo1[offset];
+                if (this.c2[this.offset] - this.convey[this.scroll] <= 0) {
+                    this.convey[this.scroll] -= this.c1[this.offset];
                 } else {
-                    this.demo[scroll]++;
+                    this.convey[this.scroll] += 5;
                 }
                 this.timer = setTimeout(this.move, this.ms);
             },
@@ -100,34 +69,45 @@
                 this.timer = setTimeout(this.move, this.ms);
             }
         },
+        components: {
+            ConveyorCol,
+            ConveyorRow,
+        },
     }
 </script>
+
 
 <style scoped>
     /**
     * 轮播图的高度
     */
-    .conveyor-img {
-        padding: 5px;
+    .conveyor-top {
+        height: 100%;
         overflow: hidden;
+        width: 100%;
     }
 
-    .conveyor-piece {
+    .conveyor-bar {
         display: flex;
-        flex-flow: column nowrap;
     }
 
-    .conveyor-piece>img {
-        height: 160px;
-    }
-
-    .conveyor-bar,
-    #demo1,
-    #demo2 {
+    /*
+        canvas1 在 ConveyorCol, ConveyorRow 文件里
+    */
+    #canvas1,
+    #canvas2 {
         display: flex;
     }
 
     p {
         text-align: center;
+    }
+
+    .vertical {
+        flex-direction: column;
+    }
+
+    .hirizon {
+        flex-direction: row;
     }
 </style>
