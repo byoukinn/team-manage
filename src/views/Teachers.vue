@@ -1,19 +1,13 @@
 <template>
-    <div class="teacher-top">
-        <nav  class="teacher-conveyor-frame">
+    <div class="row">
+        <nav  class="col-xs-3">
             <Panel  title='骨干师资' more='#'>
                 <Conveyor  :datas='members' column='true' />
             </Panel>
         </nav>
-        <section>
+        <section class="col-xs-9">
             <Panel title='团队简介' more='#'>
                 <Article :article='article' />
-                <!-- <div class="intro">
-                    <p v-for="d in details" :key="d.id"> {{ d }} </p>
-                </div>
-                <div class="intro-img-group">
-                    <img v-for="i in imgs" :key='i.id' :src="i.src" alt="">
-                </div> -->
             </Panel>
         </section>
     </div>
@@ -64,10 +58,6 @@
 </script>
 
 <style scoped>
-    div {
-        box-sizing: border-box;
-        background: aliceblue;
-    }
 
     .teacher-top {
         display: flex;

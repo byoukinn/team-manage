@@ -77,37 +77,3 @@
 </script>
 
 
-<style scoped>
-    /**
-    * 轮播图的高度
-    */
-    .conveyor-top {
-        height: 100%;
-        overflow: hidden;
-        width: 100%;
-    }
-
-    .conveyor-bar {
-        display: flex;
-    }
-
-    /*
-        canvas1 在 ConveyorCol, ConveyorRow 文件里
-    */
-    #canvas1,
-    #canvas2 {
-        display: flex;
-    }
-
-    p {
-        text-align: center;
-    }
-
-    .vertical {
-        flex-direction: column;
-    }
-
-    .hirizon {
-        flex-direction: row;
-    }
-</style>
