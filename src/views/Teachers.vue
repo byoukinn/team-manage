@@ -2,7 +2,7 @@
     <div class="teacher-top">
         <nav  class="teacher-conveyor-frame">
             <Panel  title='骨干师资' more='#'>
-                <Conveyor  :datas='members' column='true' />
+                <Conveyor :datas='members' column='true' />
             </Panel>
         </nav>
         <section>
@@ -94,7 +94,7 @@
     }
 
     .teacher-conveyor-frame {
-        height: 70%;
+        height: 500px;
     }
 
     .intro-img-group {

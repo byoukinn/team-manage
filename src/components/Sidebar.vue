@@ -1,5 +1,5 @@
 <template>
-    <div class="sidebar">
+    <div class="col-xs-3 col-lg-2 col-lg-offset-1 sidebar">
         <div v-for="item in sideData" :key="item.id">
             <router-link :to="item.target">
                 <div class="piece" :style="{background:item.bg}">
@@ -20,19 +20,19 @@
                         target: '/c',
                         imgsrc: require("@/assets/icon-1.png"),
                         desc: 'en',
-                        bg: '#b3c2c2',
+                        bg: '#F17272',
                     },
                     {
                         target: '/b',
                         imgsrc: require("@/assets/icon-2.png"),
                         desc: 'aa',
-                        bg: '#b3c2c2',
+                        bg: '#f89555',
                     },
                     {
                         target: '/a',
                         imgsrc: require("@/assets/icon-3.png"),
                         desc: 'ss',
-                        bg: '#b3c2c2',
+                        bg: '#31b2ff',
                     },
                 ],
             }

@@ -1,15 +1,14 @@
 <template>
-    <div class="home">
-        <div class="home-content">
+    <div class="container">
+        <div class="row home-content">
             <Sidebar class="sidebar" />
             <Panel :title="title" class="showbox">
                 <Article :article="article" />
             </Panel>
-
         </div>
-        <div class="conveyor">
-            <Panel :title="conveyor">
-                <Conveyor :column="false" />
+        <div class="row conveyor">
+            <Panel :title="conveyor" class="col-xs-3 col-lg-12 col-lg-offset-1">
+                <Conveyor :column="false" :datas="conveyorData" />
             </Panel>
         </div>
     </div>
@@ -37,7 +36,44 @@
 
                     ],
                 },
-                conveyor: '| 图片展示'
+                conveyor: '| 图片展示',
+                conveyorData: [{
+                        img: require("@/assets/cloud.png"),
+                        desc: 'hello',
+                    },
+                    {
+                        img: require("@/assets/cloud.png"),
+                        desc: 'xxx',
+                    },
+                    {
+                        img: require("@/assets/cloud.png"),
+                        desc: 'qqq',
+                    },
+                    {
+                        img: require("@/assets/cloud.png"),
+                        desc: 'www',
+                    },
+                    {
+                        img: require("@/assets/logo.png"),
+                        desc: 'eee',
+                    },
+                    {
+                        img: require("@/assets/logo.png"),
+                        desc: 'rrr',
+                    },
+                    {
+                        img: require("@/assets/logo.png"),
+                        desc: 'tttt',
+                    },
+                    {
+                        img: require("@/assets/logo.png"),
+                        desc: 'yyyy',
+                    },
+                    {
+                        img: require("@/assets/logo.png"),
+                        desc: 'uuuu',
+                    },
+                ],
             }
         },
         components: {
@@ -51,9 +87,6 @@
 
 <style scoped>
     .home {
-        width: 100%;
-        display: flex;
-        flex-flow: column nowrap;
         overflow: hidden;
     }
 

@@ -43,7 +43,7 @@
             this.convey = document.getElementById("conveyor");
             this.c1 = document.getElementById("canvas1");
             this.c2 = document.getElementById("canvas2");
-            this.ms = 1;
+            this.ms = 6;
             this.c2.innerHTML = this.c1.innerHTML;
             this.timer = null;
             var className = this.column ? 'vertical' : 'horizon';
@@ -58,7 +58,7 @@
                 if (this.c2[this.offset] - this.convey[this.scroll] <= 0) {
                     this.convey[this.scroll] -= this.c1[this.offset];
                 } else {
-                    this.convey[this.scroll] += 5;
+                    this.convey[this.scroll] += 1;
                 }
                 this.timer = setTimeout(this.move, this.ms);
             },
@@ -82,9 +82,7 @@
     * 轮播图的高度
     */
     .conveyor-top {
-        height: 100%;
         overflow: hidden;
-        width: 100%;
     }
 
     .conveyor-bar {
