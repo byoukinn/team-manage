@@ -20,7 +20,7 @@
                         target: '/c',
                         imgsrc: require("@/assets/icon-1.png"),
                         desc: 'en',
-                        bg: '#b3c2c2',
+                        bg: '#f17272',
                     },
                     {
                         target: '/b',

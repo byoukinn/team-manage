@@ -1,6 +1,6 @@
 <template>
     <div class="panel-top">
-        <div class="panel-row">
+        <div class="panel-row z-idx-1">
             <div class="panel-title">
                 <h3>{{ title }}</h3>
             </div>
@@ -8,7 +8,7 @@
                 <a :href="more">more</a>
             </div>
         </div>
-        <slot></slot>
+        <slot class="z-idx-2"></slot>
     </div>
 </template>
 
@@ -48,5 +48,11 @@
     }
     .panel-more {
         text-align: right;
+    }
+    .z-idx-1 {
+        z-index: 1;
+    }
+    .z-idx-2 {
+        z-index: 2;
     }
 </style>

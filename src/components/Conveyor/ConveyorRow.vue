@@ -14,18 +14,3 @@
     }
 </script>
 
-<style scoped>
-    .conveyor-row-top {
-        display: flex;
-        flex-flow: row nowrap;
-    }
-
-    .conveyor-row-outer {
-        display: flex;
-        flex-flow: column nowrap;
-    }
-
-    .conveyor-row-outer>img {
-        height: 160px;
-    }
-</style>
