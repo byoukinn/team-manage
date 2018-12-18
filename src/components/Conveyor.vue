@@ -1,5 +1,5 @@
 <template>
-    <div id="conveyor" class="conveyor-top" @mouseover="pause()" @mouseout="play()">
+    <div id="conveyor" @mouseover="pause()" @mouseout="play()">
         <div  :class="{'conveyor-bar' : !this.column}">
             <Conveyor-Col v-if="column" :datas='datas' />
             <Conveyor-Row v-else :datas='datas' />
