@@ -5,7 +5,9 @@
                 <Header :bannerContent="bannerContent" />
             </div>
             <div class="container-fluid navbox">
-                <NavBar :navData="navData" class="navbar" />
+				<div class="container">
+                	<NavBar :navData="navData" />
+				</div>
             </div>
             <div class="container">
                 <router-view />
@@ -126,7 +128,6 @@
         font: 14px 微软雅黑, "Arial Narrow";
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        text-align: center;
         color: #2c3e50;
         width: 100%;
     }

@@ -1,11 +1,11 @@
 <template>
     <div class="row navbar">
-        <ul class="col-xs-10 col-lg-6 col-lg-offset-3 nav" >
+        <ul class="col-xs-12 nav" >
             <li v-for="item in navData" :key="item.id" @mouseover="showsub($event.srcElement)" @mouseout="hidesub($event.srcElement)">
                 <router-link :to="item.path">
                     {{ item.content }}
                 </router-link>
-                <ul v-if="item.sub" @mouseover="showsub($event.srcElement)">
+                <ul class="navbar-inner-ul" v-if="item.sub" @mouseover="showsub($event.srcElement)">
                     <div v-for="subitem in item.sub" :key="subitem.id">
                         <li>
                             <router-link :to="subitem.path">
@@ -108,5 +108,9 @@
 
     a {
         font-size: 12px;
+    }
+
+    .navbar-inner-ul {
+        padding-left: 0px;    
     }
 </style>

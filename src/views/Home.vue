@@ -1,15 +1,26 @@
 <template>
-    <div>
+    <div class="home-top">
         <div class="row home-content">
-            <Sidebar class="sidebar" />
-            <Panel :title="title" class="showbox">
-                <Article :article="article" />
-            </Panel>
+            <div class="col-xs-3 sidebar">
+                <Panel>
+                   <Sidebar/>
+                </Panel>
+                 
+            </div>
+            <div class="col-xs-9 showbox">
+                <Panel :title="title">
+                    <Article :article="article" />
+                </Panel>
+
+            </div>
         </div>
         <div class="row conveyor">
-            <Panel :title="conveyor" class="col-xs-3 col-lg-12 col-lg-offset-1">
+            <div class="col-xs-12" >
+                <Panel :title="conveyor ">
                 <Conveyor :column="false" :datas="conveyorData" />
             </Panel>
+
+            </div>
         </div>
     </div>
 </template>
@@ -86,23 +97,10 @@
 </script>
 
 <style scoped>
-    .home {
-        overflow: hidden;
+    .showbox {
+        padding-left: 0px;
     }
-
-    .home-content,
-    .conveyor {
-        display: flex;
-        margin: 10px auto;
-        width: inherit;
+    .home-top>div {
+        margin: 15px auto;
     }
-
-    .sidebar {
-        min-width: 250px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        margin-right: 10px;
-    }
-
 </style>

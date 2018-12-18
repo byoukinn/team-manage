@@ -1,5 +1,5 @@
 <template>
-    <div class="row">
+    <div class="row teacher-top">
         <nav  class="col-xs-3" style="height: 600px">
             <Panel  title='骨干师资' more='#' >
                 <Conveyor  :datas='members' column='true' />
@@ -35,16 +35,16 @@
                 members: [{
                         avatar: require('@/assets/a12.jpg'),
                         name: '李老师',
-                        overview: '李老师 岩土工程博士/在站博士后，副教授，高级技师，南粤优秀教师，城建教学名师，',
+                        overview: '副教授，高级技师，南粤优秀教师，城建教学名师，',
                     }, {
                         avatar: require('@/assets/a13.jpg'),
                         name: '邹老师',
-                        overview: '邹泽忠 毕业于清华大学工业与民用建筑专业，高级工程师、水电部注册监理工程师。',
+                        overview: '高级工程师、水电部注册监理工程师。',
                     },
                     {
                         avatar: require('@/assets/a14.jpg'),
                         name: '邹老师',
-                        overview: '邹泽忠 毕业于清华大学工业与民用建筑专业，高级工程师、水电部注册监理工程师。',
+                        overview: '高级工程师、水电部注册监理工程师。',
                     },
                 ],
             }
@@ -60,8 +60,11 @@
 <style scoped>
 
     .teacher-top {
-        display: flex;
-        flex-flow: row;
+        margin: 15px auto;
+    }
+
+    .teacher-top>section {
+        padding-left: 0px;
     }
 
     p {
