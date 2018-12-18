@@ -31,7 +31,6 @@
                 if (submenu) {
                     submenu.style.display = "flex";
                     submenu.onmouseover = function () {
-                        li.style.backgroundColor = "#f58c02"
                         submenu.style.display = "flex";
                     }
                 }
@@ -40,9 +39,9 @@
                 var submenu = li.nextSibling;
                 if (submenu) {
                     submenu.onmouseout = function () {
-                        li.style.backgroundColor = ""
                         submenu.style.display = "none";
                     }
+                    li.style.backgroundColor = "transparents";
                     submenu.style.display = "none";
                 }
             }

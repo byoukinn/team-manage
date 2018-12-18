@@ -37,10 +37,16 @@ export default {
         align-items: flex-start;
     }
     .article-row>div {
-        padding: 10px;
+        padding: 20px;
+        padding-left: 20px;
     }
+    
     .article-row>div:last-child {
-        padding-left: 0px; 
+        padding-left: 20px; 
+    }
+
+    .para-group {
+        padding: 10px;
     }
 
 </style>

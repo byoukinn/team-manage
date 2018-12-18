@@ -1,5 +1,5 @@
 <template>
-    <div class="col-xs-3 col-lg-2 col-lg-offset-1 sidebar">
+    <div class="col-xs-3 col-lg-3 col-lg-offset-1 sidebar">
         <div v-for="item in sideData" :key="item.id">
             <router-link :to="item.target">
                 <div class="piece" :style="{background:item.bg}">
@@ -20,7 +20,7 @@
                         target: '/c',
                         imgsrc: require("@/assets/icon-1.png"),
                         desc: 'en',
-                        bg: '#F17272',
+                        bg: '#f17272',
                     },
                     {
                         target: '/b',
@@ -61,6 +61,6 @@
     .piece {
         border-radius: 12px;
         margin: 5px;
-        padding: 30px;
+        padding: 20px;
     }
 </style>

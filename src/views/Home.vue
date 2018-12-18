@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div>
         <div class="row home-content">
             <Sidebar class="sidebar" />
             <Panel :title="title" class="showbox">

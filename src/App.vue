@@ -1,5 +1,5 @@
 <template>
-    <div id="app" class=".container">
+    <div id="app">
             <div class="container">
                 <Star />
                 <Header :bannerContent="bannerContent" />
@@ -7,7 +7,9 @@
             <div class="container-fluid navbox">
                 <NavBar :navData="navData" class="navbar" />
             </div>
-            <router-view />
+            <div class="container">
+                <router-view />
+            </div>
             <div class="container-fluid">
                 <Footer :content="fcontent" /> 
             </div>
@@ -24,10 +26,12 @@
         name: 'app',
         data() {
             return {
+                // footer文字
                 fcontent: [
                     '© 2018 广东农工商职业技术学院 计算机学院 ｜ 技术支持：ITeam基地 软件青创工作室',
                     '地址：广东省广州市广东农工商职业技术学院增城校区',
                 ],
+                // 导航栏数据
                 navData: [
                     /**
                      * 一个对象一个 [li 选项]
@@ -75,6 +79,7 @@
                         }, ],
                     },
                 ],
+                // 横幅文字
                 bannerContent: [
                     '专业社团-工作室-创业公司"育人平台的探索与实践',
                     '省级教育教学成果奖申报网站'
@@ -100,6 +105,10 @@
     a,
     a:hover {
         text-decoration: none;
+    }
+
+    a:focus {
+        background: transparent;
     }
 
     .navbox,

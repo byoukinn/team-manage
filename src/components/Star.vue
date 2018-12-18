@@ -1,6 +1,6 @@
 <template>
     <div class="row">
-            <div class="col-xs-3 col-xs-offset-9 col-lg-3 col-lg-offset-9 star">
+            <div class="col-xs-4 col-xs-offset-8 col-lg-3 col-lg-offset-9 star">
                 <ul>
                     <li class="pull-left"><img :src="require('@/assets/navL.png')" alt=""></li>
                     <li class="pull-left bg"><a href="">设为首页</a></li>

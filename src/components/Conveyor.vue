@@ -1,6 +1,6 @@
 <template>
     <div id="conveyor" class="conveyor-top" @mouseover="pause()" @mouseout="play()">
-        <div :class="{'conveyor-bar' : !this.column}">
+        <div  :class="{'conveyor-bar' : !this.column}">
             <Conveyor-Col v-if="column" :datas='datas' />
             <Conveyor-Row v-else :datas='datas' />
             <div id="canvas2"></div>
@@ -19,47 +19,64 @@
         props: ['datas', 'column'],
         data: function () {
             return {
-                /**
-                 * 轮播图的 路径: src， 描述: desc
-                 * 图片需要require()方法请求进来
-                 * */
+                // 轮播图的 路径: src， 描述: desc
+                // 图片需要require()方法请求进来
                 convey: null,
                 c1: null,
                 c2: null,
-                ms: null,
+                ms: 6,
                 timer: null,
-                offset: '',
-                scroll: '',
-
-                /**
-                 * true 为垂直向上滚动， false 为水平向左滚动 
-                 */
+                speed: 1,
             }
         },
         mounted: function () {
             /**
              * 轮播图
              */
-            this.convey = document.getElementById("conveyor");
+            this.convey = document.getElementById("conveyor-bar");
             this.c1 = document.getElementById("canvas1");
             this.c2 = document.getElementById("canvas2");
-            this.ms = 6;
             this.c2.innerHTML = this.c1.innerHTML;
             this.timer = null;
-            var className = this.column ? 'vertical' : 'horizon';
-            this.c1.className = this.c1.className + " " + className;
-            this.c2.className = this.c2.className + " " + className;
-            this.offset = this.column ? 'offsetHeight' : 'offsetWidth';
-            this.scroll = this.column ? 'scrollTop' : 'scrollLeft';
+            // 初始化
+            this.setup();
             this.move();
         },
         methods: {
+            setup: function () {
+                var className = this.column ? 'vertical' : 'horizon';
+                this.c1.style.transform = 'translate(0px, 0px)'
+                this.c2.style.transform = 'translate(0px, 0px)'
+                this.c1.className = this.c1.className + " " + className;
+                this.c2.className = this.c1.className;
+            },
+            getSize: function(dom) {
+                return this.column ? dom.offsetHeight : dom.offsetWidth;
+            },
+            calc: function (origin) {
+                return (origin - this.speed) % this.getSize(this.c1);
+            },
+            getTransform: function (dom) {
+                var regex = /translate\((-*\d+)px,\s*(-*\d+)px\)/i,
+                    t = dom.style.transform,
+                    axis = t.match(regex),
+                    o = {
+                        x: axis[1],
+                        y: axis[2],
+                    };
+                return o;
+            },
+            setTransform: function (dom, x, y) {
+                var r = `translate(${x}px, ${y}px)`;
+                dom.style.transform = r;
+            },
             move: function () {
-                if (this.c2[this.offset] - this.convey[this.scroll] <= 0) {
-                    this.convey[this.scroll] -= this.c1[this.offset];
-                } else {
-                    this.convey[this.scroll] += 1;
-                }
+                var 
+                    axis = this.getTransform(this.c1),
+                    x = this.column ? axis.x : this.calc(axis.x),
+                    y = !this.column ? axis.y : this.calc(axis.y);
+                this.setTransform(this.c1, x, y);
+                this.setTransform(this.c2, x, y);
                 this.timer = setTimeout(this.move, this.ms);
             },
             pause: function () {
@@ -76,36 +93,29 @@
     }
 </script>
 
-
 <style scoped>
-    /**
-    * 轮播图的高度
-    */
-    .conveyor-top {
-        overflow: hidden;
+    #conveyor {
+        display: flex;
     }
-
     .conveyor-bar {
         display: flex;
+        flex-flow: row nowrap;
     }
-
-    /*
-        canvas1 在 ConveyorCol, ConveyorRow 文件里
-    */
-    #canvas1,
-    #canvas2 {
+    .conveyor-row-top {
         display: flex;
+        flex-flow: row nowrap;
     }
 
-    p {
-        text-align: center;
+    .conveyor-row-outer {
+        display: flex;
+        flex-flow: column nowrap;
     }
 
-    .vertical {
-        flex-direction: column;
+    .conveyor-row-outer>img {
+        height: 160px;
     }
-
-    .hirizon {
+    
+    .horizon {
         flex-direction: row;
     }
 </style>
