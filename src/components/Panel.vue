@@ -39,10 +39,13 @@
     }
 
     .panel-row {
+        box-shadow: 0px 1px 26px #bbb;
         color: #025e3a;
         text-align: left;
         background-color: #f4f4f4;
         margin: 0px;
+        border-left: 1px solid #dbdbdb;
+        border-right: 1px solid #dbdbdb;
     }
 
     /* .panel-row {

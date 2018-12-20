@@ -1,20 +1,20 @@
 <template>
     <div id="app">
+        <div class="container">
+            <Star />
+            <Header :bannerContent="bannerContent" />
+        </div>
+        <div class="container-fluid navbox">
             <div class="container">
-                <Star />
-                <Header :bannerContent="bannerContent" />
+                <NavBar :navData="navData" />
             </div>
-            <div class="container-fluid navbox">
-				<div class="container">
-                	<NavBar :navData="navData" />
-				</div>
-            </div>
-            <div class="container">
-                <router-view />
-            </div>
-            <div class="container-fluid">
-                <Footer :content="fcontent" /> 
-            </div>
+        </div>
+        <div class="container">
+            <router-view />
+        </div>
+        <div class="container-fluid">
+            <Footer :content="fcontent" />
+        </div>
     </div>
 </template>
 
@@ -98,11 +98,9 @@
 </script>
 
 <style>
-    
-
     body {
         background: #f7f7f7;
-    } 
+    }
 
     a,
     a:hover {
