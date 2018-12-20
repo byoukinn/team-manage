@@ -4,10 +4,12 @@
     <div>
         <h3>这里是Demo</h3>
 
-            <Panel title='团队简介'  class="demo-height">
-                <Conveyor  :datas='conveyorData' :column='false' />
-            </Panel>
-
+        <Panel title='团队简介' class="demo-height">
+            <Conveyor :column="false">
+                <Conveyor-Row @onclickindex="elog" v-for="(data, i) in conveyorData" :key="data.id" :data="data" :index="i"/>
+            </Conveyor>
+            <h3 v-for="num in 2" :key="num" :id="'canvas' + num">得到的结果： {{num}}</h3>
+        </Panel>
 
     </div>
 </template>
@@ -15,51 +17,13 @@
 <script>
     import Panel from '@/components/Panel.vue'
     import Conveyor from '@/components/Conveyor.vue'
+    import ConveyorRow from '@/components/Conveyor/ConveyorRow.vue'
+    import pool from '@/config.js'
 
     export default {
         name: 'Demo',
         data() {
-            return {
-                timer: null,
-                conveyorData: [{
-                        img: require("@/assets/cloud.png"),
-                        desc: 'hello',
-                    },
-                    {
-                        img: require("@/assets/cloud.png"),
-                        desc: 'xxx',
-                    },
-                    {
-                        img: require("@/assets/cloud.png"),
-                        desc: 'qqq',
-                    },
-                    {
-                        img: require("@/assets/cloud.png"),
-                        desc: 'www',
-                    },
-                    {
-                        img: require("@/assets/logo.png"),
-                        desc: 'eee',
-                    },
-                    {
-                        img: require("@/assets/logo.png"),
-                        desc: 'rrr',
-                    },
-                    {
-                        img: require("@/assets/logo.png"),
-                        desc: 'tttt',
-                    },
-                    {
-                        img: require("@/assets/logo.png"),
-                        desc: 'yyyy',
-                    },
-                    {
-                        img: require("@/assets/logo.png"),
-                        desc: 'uuuu',
-                    },
-                ],
-
-            }
+            return pool.demoData();
         },
         props: ['list'],
         methods: {
@@ -72,12 +36,11 @@
             pause: function () {
                 clearInterval(this.timer)
             },
-
         },
-        created: function () {},
         components: {
             Panel,
             Conveyor,
+            ConveyorRow,
         },
     }
 </script>
@@ -87,8 +50,8 @@
     div {
         width: 100%;
     }
+
     .demo-height {
         height: 300px;
     }
-
 </style>
