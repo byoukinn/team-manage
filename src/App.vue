@@ -28,7 +28,7 @@
             return {
                 // footer文字
                 fcontent: [
-                    '© 2018 广东农工商职业技术学院 计算机学院 ｜ 技术支持：ITeam基地 软件青创工作室',
+                    '© 2018 广东农工商职业技术学院 计算机学院 ｜ 技术支持：ITeam基地 软件众创工作室',
                     '地址：广东省广州市广东农工商职业技术学院增城校区',
                 ],
                 // 导航栏数据
@@ -55,7 +55,7 @@
                     },
                     {
                         content: '成果展示',
-                        path: '/chengguo',
+                        path: '/content',
                         sub: [{
                                 content: '测试选项',
                                 path: '/',
@@ -96,7 +96,6 @@
 </script>
 
 <style>
-    
 
     body {
         background: #f7f7f7;
@@ -107,7 +106,7 @@
         text-decoration: none;
     }
 
-    a:focus {
+    .nav>li>a:focus {
         background: transparent;
     }
 

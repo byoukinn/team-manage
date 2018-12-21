@@ -1,5 +1,5 @@
 <template>
-    <div id="conveyor" @mouseover="pause()" @mouseout="play()">
+    <div id="conveyor" @mousedown="pause()" @mouseup="play()">
         <div  :class="{'conveyor-bar' : !this.column}">
             <Conveyor-Col v-if="column" :datas='datas' />
             <Conveyor-Row v-else :datas='datas' />
@@ -84,7 +84,7 @@
             },
             play: function () {
                 this.timer = setTimeout(this.move, this.ms);
-            }
+            },
         },
         components: {
             ConveyorCol,

@@ -28,5 +28,18 @@ export default new Router({
       name: 'teachers',
       component: () => import( './views/Teachers.vue')
     },
+    {
+        path: '/content',
+        name: 'content',
+        component: () => import( './views/Content.vue'),
+        children:[
+            {
+                path: '/content/1',
+                name: 'content1',
+                component: () => import( './views/Content.vue')
+            },
+        ],
+    },
+    
   ]
 })
