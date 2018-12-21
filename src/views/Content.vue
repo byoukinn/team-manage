@@ -1,6 +1,8 @@
 <template>
     <div class="row">
-        <SideMenu :menu-list="menuList"></SideMenu>
+        <div>
+            <SideMenu :menu-list="menuList"></SideMenu>
+        </div>
         <div>
             <router-view></router-view>
         </div>

@@ -1,16 +1,19 @@
 <template>
-    <div id='canvas1' class="conveyor-row-top">
-        <div class='conveyor-row-outer' v-for="d in datas" :key="d.id">
-            <img :src="d.img" alt="">
-            <p v-if='d.desc'>{{ d.desc }}</p>
-        </div>
+    <div class='conveyor-row-outer' @mousedown="onmousedown($event)" >
+        <img :src="data.img" alt="">
+        <p v-if='data.desc'>{{ data.desc }}</p>
     </div>
 </template>
 
 <script>
     export default {
         name: 'ConveyorRow',
-        props: ['datas'],
+        props: ['data', 'index'],
+        methods: {
+            onmousedown: function() {
+                this.$emit('mousedownindex', this.index)
+            },
+        },
     }
 </script>
 

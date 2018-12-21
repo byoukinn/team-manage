@@ -1,10 +1,12 @@
 <template>
-    <div class="col-xs-3 col-lg-3 col-lg-offset-1 sidebar">
+    <div class="sidebar">
         <div v-for="item in sideData" :key="item.id">
             <router-link :to="item.target">
                 <div class="piece" :style="{background:item.bg}">
-                    <img :src="item.imgsrc" />
-                    <p>{{ item.desc }}</p>
+                    <div class="content">
+                        <img :src="item.imgsrc" />
+                        <p>{{ item.desc }}</p>
+                    </div>
                 </div>
             </router-link>
         </div>
@@ -50,17 +52,28 @@
         color: #fff;
     }
 
-    .sidebar {
+    /* .sidebar {
         border: 1px solid #dbdbdb;
-    }
+    } */
 
     img {
-        max-width: 100px;
+        max-width: 100%;
     }
 
     .piece {
+        position: relative;
         border-radius: 12px;
-        margin: 5px;
-        padding: 20px;
+        margin: 3%;
+        width: 94%;
+        padding-bottom: 64%; 
+        box-sizing: border-box;
+        height: 0; 
     }
-</style>
+    .content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+ </style>

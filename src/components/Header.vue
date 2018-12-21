@@ -1,6 +1,6 @@
 <template>
     <div class="row header">
-        <div class="col-xs-12 col-lg-10 col-lg-offset-1">
+        <div class="col-xs-12">
             <img class="logo pull-left" src="@/assets/logo.png" alt="广东农工商职业技术学院">
             <div class="pull-left banner">
                 <p v-for="item in bannerContent" :key="item.id">{{ item }}</p>

@@ -1,22 +1,20 @@
 <template>
-    <div id="conveyor" @mousedown="pause()" @mouseup="play()">
-        <div  :class="{'conveyor-bar' : !this.column}">
-            <Conveyor-Col v-if="column" :datas='datas' />
-            <Conveyor-Row v-else :datas='datas' />
-            <div id="canvas2"></div>
+    <div id="conveyor" @mouseover="pause()" @mouseout="play()">
+        <div :class="{'conveyor-bar' : !column}">
+            <div v-for="num in 2" :key="num" 
+                :id="'canvas' + num" 
+                :class="{'conveyor-row-top' : !column}">
+                <slot></slot>
+            </div>
         </div>
     </div>
 </template>
 
 
 <script>
-    import ConveyorCol from '@/components/Conveyor/ConveyorCol.vue'
-    import ConveyorRow from '@/components/Conveyor/ConveyorRow.vue'
-    // FIXME: 刷新后，宽度是不预期的，被父节点定了。
-    // FIXME: PANEL是他的父节点。
     export default {
         name: 'Conveyor',
-        props: ['datas', 'column'],
+        props: ['column'],
         data: function () {
             return {
                 // 轮播图的 路径: src， 描述: desc
@@ -70,6 +68,11 @@
                 var r = `translate(${x}px, ${y}px)`;
                 dom.style.transform = r;
             },
+            /**
+             * 实际轮播算法。
+             * 原理，操作css的transform属性，让图表移动。
+             * 当a表完全播完，直接将移动值置零
+             */
             move: function () {
                 var 
                     axis = this.getTransform(this.c1),
@@ -85,10 +88,6 @@
             play: function () {
                 this.timer = setTimeout(this.move, this.ms);
             },
-        },
-        components: {
-            ConveyorCol,
-            ConveyorRow,
         },
     }
 </script>
