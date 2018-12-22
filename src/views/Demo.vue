@@ -6,7 +6,7 @@
 
         <Panel title='团队简介' class="demo-height">
             <Conveyor :column="false">
-                <Conveyor-Row @onclickindex="elog" v-for="(data, i) in conveyorData" :key="data.id" :data="data" :index="i"/>
+                <Conveyor-Row @mousedownindex="elog" v-for="(data, i) in conveyorData" :key="data.id" :data="data" :index="i"/>
             </Conveyor>
             <h3 v-for="num in 2" :key="num" :id="'canvas' + num">得到的结果： {{num}}</h3>
         </Panel>
@@ -27,6 +27,9 @@
         },
         props: ['list'],
         methods: {
+            elog: function (params) {
+                console.log(params)
+            },
             runApp: function () {
 
             },

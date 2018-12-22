@@ -1,10 +1,13 @@
 <template>
     <div id="conveyor" @mouseover="pause()" @mouseout="play()">
         <div :class="{'conveyor-bar' : !column}">
-            <div v-for="num in 2" :key="num" 
-                :id="'canvas' + num" 
-                :class="{'conveyor-row-top' : !column}">
-                <slot></slot>
+            <div :class="{'conveyor-row-top' : !column}">
+                <div id="canvas1">
+                    <slot></slot>
+                </div>
+                <div id="canvas2">
+                    <slot></slot>
+                </div>
             </div>
         </div>
     </div>
@@ -22,7 +25,6 @@
                 convey: null,
                 c1: null,
                 c2: null,
-                ms: 6,
                 timer: null,
                 speed: 1,
             }
@@ -34,8 +36,7 @@
             this.convey = document.getElementById("conveyor-bar");
             this.c1 = document.getElementById("canvas1");
             this.c2 = document.getElementById("canvas2");
-            this.c2.innerHTML = this.c1.innerHTML;
-            this.timer = null;
+            // this.c2.innerHTML = this.c1.innerHTML;
             // 初始化
             this.setup();
             this.move();
@@ -48,7 +49,7 @@
                 this.c1.className = this.c1.className + " " + className;
                 this.c2.className = this.c1.className;
             },
-            getSize: function(dom) {
+            getSize: function (dom) {
                 return this.column ? dom.offsetHeight : dom.offsetWidth;
             },
             calc: function (origin) {
@@ -74,20 +75,20 @@
              * 当a表完全播完，直接将移动值置零
              */
             move: function () {
-                var 
+                var
                     axis = this.getTransform(this.c1),
                     x = this.column ? axis.x : this.calc(axis.x),
                     y = !this.column ? axis.y : this.calc(axis.y);
                 this.setTransform(this.c1, x, y);
                 this.setTransform(this.c2, x, y);
-                this.timer = setTimeout(this.move, this.ms);
+                this.timer = setTimeout(this.move, 6);
             },
             pause: function () {
                 clearTimeout(this.timer);
             },
             play: function () {
-                this.timer = setTimeout(this.move, this.ms);
-            },
+                this.timer = setTimeout(this.move, 6);
+            }
         },
     }
 </script>
@@ -96,10 +97,12 @@
     #conveyor {
         display: flex;
     }
+
     .conveyor-bar {
         display: flex;
         flex-flow: row nowrap;
     }
+
     .conveyor-row-top {
         display: flex;
         flex-flow: row nowrap;
@@ -113,7 +116,7 @@
     .conveyor-row-outer>img {
         height: 160px;
     }
-    
+
     .horizon {
         flex-direction: row;
     }

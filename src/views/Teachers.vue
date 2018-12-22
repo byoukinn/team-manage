@@ -1,9 +1,13 @@
 <template>
     <div class="row teacher-top">
-        <nav  class="col-xs-3" style="height: 600px">
-            <Panel  title='骨干师资' more='#' >
+        <nav class="col-xs-3" style="height: 600px">
+            <Panel title='骨干师资' more='#'>
                 <Conveyor column='true'>
-                    <Conveyor-Col v-for="(m, i) in members" :key="m.id" :data="m" value="m.id" :index="i" @mousedownindex="replaceMember"></Conveyor-Col> 
+                        <Conveyor-Col v-for="(m, i) in members" 
+                            :key="m.id" 
+                            :data="m" 
+                            :index="i"
+                            @mousedownindex="replaceMember" />
                 </Conveyor>
             </Panel>
         </nav>
@@ -46,7 +50,6 @@
 </script>
 
 <style scoped>
-
     .teacher-top {
         margin: 15px auto;
     }
