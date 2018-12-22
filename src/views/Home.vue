@@ -17,7 +17,7 @@
         <div class="row conveyor">
             <div class="col-xs-12" >
                 <Panel :title="conveyor ">
-                <Conveyor :column="false">
+                <Conveyor >
                     <Conveyor-Row v-for="data in conveyorData" :key="data.id" :data="data" />
                 </Conveyor>
             </Panel>
