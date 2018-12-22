@@ -11,66 +11,101 @@
  * 当type为link时
  * url: 路由的路径
  */
+// let menu = [
+//     [],
+//     [],
+// ]
 
 let menus = [
     {
         level: 1,
-        name: '快速上手',
-        type: "link",
-        url: "/detail/quickstart"
-    },
-    {
-        level: 1,
-        name: '教程',
+        name: '成果展示',
         type: "button",
         isExpanded: false,
         isSelected: false,
         subMenu: [
             {
                 level: 2,
-                name: '简介',
+                name: '快速上手',
                 type: "link",
-                url: "/detail/tutorial"
+                url: "/content/1"
             },
             {
                 level: 2,
-                name: '英雄编辑器',
-                type: "link",
-                url: "/detail/toh-pt1"
-            },
-            {
-                level: 2,
-                name: '主从结构',
-                type: "link",
-                url: "/detail/toh-pt2"
-            },
-            {
-                level: 2,
-                name: '多个组件',
-                type: "link",
-                url: "/detail/toh-pt3"
-            },
-            {
-                level: 2,
-                name: '服务',
-                type: "link",
-                url: "/detail/toh-pt4"
-            },
-            {
-                level: 2,
-                name: '路由',
-                type: "link",
-                url: "/detail/toh-pt5"
-            },
-            {
-                level: 2,
-                name: 'HTTP',
+                name: '教程',
                 type: "button",
-                url: "/detail/toh-pt6"
+                isExpanded: false,
+                isSelected: false,
+                subMenu: [
+                    {
+                        level: 3,
+                        name: '简介',
+                        type: "link",
+                        url: "/content/1"
+                    },
+                    {
+                        level: 3,
+                        name: '英雄编辑器',
+                        type: "link",
+                        url: "/content/1"
+                    },
+                    {
+                        level: 3,
+                        name: '主从结构',
+                        type: "link",
+                        url: "/content/1"
+                    },
+                    {
+                        level: 3,
+                        name: '多个组件',
+                        type: "link",
+                        url: "/content/1"
+                    },
+                    {
+                        level: 3,
+                        name: '服务',
+                        type: "link",
+                        url: "/content/1"
+                    },
+                    {
+                        level: 3,
+                        name: '路由',
+                        type: "link",
+                        url: "/content/1"
+                    },
+                    {
+                        level: 3,
+                        name: 'HTTP',
+                        type: "link",
+                        url: "/content/1"
+                    },
+                ]
             },
+        ],
+    }
+    
+];
+
+let contents = {
+    '成果展示': {
+        title: '成果展示',
+        paragraph: [
+            "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
         ]
     },
-];
+    '快速上手': {
+        title: '快速上手',
+        paragraph: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    '路由': {
+        title: '路由',
+        paragraph: "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    },
+}
+    
+let flag = menus[0].name;
+let content = contents[flag];
+
 
 let levelNum = 1;
 let startExpand = []; // 保存刷新后当前要展开的菜单项
@@ -93,8 +128,12 @@ function setExpand(source, url) {
 
 const state = {
     menus,
-    levelNum
+    levelNum,
+    contents,
+    flag,
+    content,
 };
+
 
 const mutations = {
     findParents(state, payload) {
@@ -108,11 +147,14 @@ const mutations = {
             }
             startExpand = []; // 清空展开菜单记录项
             setExpand(state.menus, payload.menu.url);
-        };
+        }
     },
     firstInit(state, payload) {
         setExpand(state.menus, payload.url);
-    }
+    },
+    getTarget(state, payload) {
+        state.content = state.contents[payload.target.text];
+    },
 }
 
 export default {

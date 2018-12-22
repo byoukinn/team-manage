@@ -1,6 +1,6 @@
 <template>
     <div class="article-top">
-        <h3 v-if="article.title">{{ article.title }}</h3>
+        <h3 class="article-title" v-if="article.title">{{ article.title }}</h3>
         <div class="article-row">
             <div class="para-group">
                 <p v-for="item in article.paragraph" :key="item.id">{{ item }}</p>
@@ -27,6 +27,12 @@ export default {
     }
     .article-top p img {
         text-align: center;
+    }
+    .article-title{
+        display: block;
+        width: 100%;
+        flex: none;
+        margin: auto;
     }
     .article-top, .article-row, .img-group {
         display: flex;

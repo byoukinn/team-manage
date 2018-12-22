@@ -1,8 +1,8 @@
 <template>
     <div class="TreeMenuItem">
         <div class="level" :class="'level-'+ menu.level" v-for="menu in menus" :key="menu.id">
-            <div v-if="menu.type === 'link'">
-                <router-link class="link" :to="menu.url" @click.native="toggle(menu)">{{menu.name}}</router-link>
+            <div v-if="menu.type === 'link'" @click="showArt($event.target)">
+                <a href="javascript:void(0)" class="link" @click.native="toggle(menu)">{{menu.name}}</a>
             </div>
             <div v-if="menu.type === 'button'">
                 <div class="button heading" :class="{selected: menu.isSelected,expand:menu.isExpanded}" @click="toggle(menu)">
@@ -15,7 +15,7 @@
                 </div>
                 <transition name="fade">
                     <div class="heading-children" v-show="menu.isExpanded" v-if="menu.subMenu">
-                        <TreeMenuItem :menus='menu.subMenu'></TreeMenuItem>
+                        <TreeMenuItem :menus='menu.subMenu' v-bind="$attrs" v-on="$listeners"></TreeMenuItem>
                     </div>
                 </transition>
             </div>
@@ -36,6 +36,11 @@
             toggle(menu) {
                 this.$store.commit("findParents", {
                     menu
+                });
+            },
+            showArt(target) {
+                this.$store.commit("getTarget", {
+                    target
                 });
             }
         }
