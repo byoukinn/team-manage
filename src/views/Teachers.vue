@@ -37,7 +37,6 @@
         methods: {
             replaceMember(index) {
                 this.currentMember = this.members[index]
-                console.log('currentMember', index, this.currentMember)
             },
         },
         components: {
@@ -50,9 +49,6 @@
 </script>
 
 <style scoped>
-    .teacher-top {
-        margin: 15px auto;
-    }
 
     .teacher-top>section {
         padding-left: 0px;

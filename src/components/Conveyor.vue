@@ -36,7 +36,6 @@
             this.convey = document.getElementById("conveyor-bar");
             this.c1 = document.getElementById("canvas1");
             this.c2 = document.getElementById("canvas2");
-            // this.c2.innerHTML = this.c1.innerHTML;
             // 初始化
             this.setup();
             this.move();
@@ -101,6 +100,11 @@
     .conveyor-bar {
         display: flex;
         flex-flow: row nowrap;
+    }
+
+    .conveyor-row-top #canvas1, 
+    .conveyor-row-top #canvas2 {
+        display: flex;
     }
 
     .conveyor-row-top {

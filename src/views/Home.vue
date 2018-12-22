@@ -1,6 +1,6 @@
 <template>
     <div class="home-top">
-        <div class="row home-content">
+        <div class="row">
             <div class="col-xs-3 sidebar">
                 <Panel>
                    <Sidebar/>
@@ -14,8 +14,8 @@
 
             </div>
         </div>
-        <div class="row conveyor">
-            <div class="col-xs-12" >
+        <div class="row">
+            <div class="col-xs-12 conveyor" >
                 <Panel :title="conveyor ">
                 <Conveyor >
                     <Conveyor-Row v-for="data in conveyorData" :key="data.id" :data="data" />
@@ -58,4 +58,8 @@
     .home-top>div {
         margin: 15px auto;
     }
+    .sidebar, .conveyor {
+        text-align: center;
+    }
+
 </style>

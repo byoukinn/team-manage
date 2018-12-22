@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class="container">
-            <router-view />
+            <router-view class="view"/>
         </div>
         <div class="container-fluid">
             <Footer :content="fcontent" />
@@ -116,10 +116,8 @@
         background-color: #025e3a;
     }
 
-
-
     a:visited {
-        color: white;
+        color: #025e3a;
     }
 
     #app {
@@ -129,4 +127,11 @@
         color: #2c3e50;
         width: 100%;
     }
+</style>
+
+<style scoped>
+    .view  {
+        margin: 25px auto;
+    }
+
 </style>

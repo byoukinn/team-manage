@@ -30,6 +30,10 @@ export default {
         font-size: 12px;
     }
 
+    a, a:focus {
+        color: #eee !important;
+    }
+
     .star ul li a:hover {
         color: #f58c02;
     }

@@ -1,7 +1,7 @@
 <template>
     <div class="sidebar">
         <div v-for="item in sideData" :key="item.id">
-            <router-link :to="item.target">
+            <router-link :to="item.to">
                 <div class="piece" :style="{background:item.bg}">
                     <div class="content">
                         <img :src="item.imgsrc" />
@@ -19,21 +19,21 @@
         data() {
             return {
                 sideData: [{
-                        target: '/c',
+                        to: '/c',
                         imgsrc: require("@/assets/icon-1.png"),
-                        desc: 'en',
+                        desc: '侧边栏块A ',
                         bg: '#f17272',
                     },
                     {
-                        target: '/b',
+                        to: '/b',
                         imgsrc: require("@/assets/icon-2.png"),
-                        desc: 'aa',
+                        desc: '侧边栏块B',
                         bg: '#f89555',
                     },
                     {
-                        target: '/a',
+                        to: '/a',
                         imgsrc: require("@/assets/icon-3.png"),
-                        desc: 'ss',
+                        desc: '侧边栏块C',
                         bg: '#31b2ff',
                     },
                 ],

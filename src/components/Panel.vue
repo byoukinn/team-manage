@@ -1,7 +1,7 @@
 <template>
     <div class="panel-top">
         <div class="z-idx-2 ">
-            <div v-if="title" class="col-xs-12 panel-row ">
+            <div v-if="title" class="col-xs-12 panel-row">
                 <div class="col-xs-6 panel-title">
                     <h3>{{ title }}</h3>
                 </div>
@@ -47,29 +47,10 @@
         border-left: 1px solid #dbdbdb;
         border-right: 1px solid #dbdbdb;
     }
-
-    /* .panel-row {
-        width: 100%;
-        box-sizing: border-box;
-        align-items: baseline;
-        display: flex;
-        text-align: left;
-        background-color: #f4f4f4;
+     .panel-more {
+        line-height: 44px;
         color: #025e3a;
     }
-    .panel-row>div {
-        width: 50%;
-    }
-    .panel-row>div>h3, .row>div>a {
-        font-size: 18px;
-        margin: 10px auto;
-        padding: 0px 20px;
-    }*/
-    .panel-more {
-        line-height: 44px;
-
-    }
-
     .z-idx-1 {
         z-index: 1;
         position: relative;

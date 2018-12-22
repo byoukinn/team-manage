@@ -1,12 +1,17 @@
 <template>
-    <div class="article-top">
-        <h3 class="article-title" v-if="article.title">{{ article.title }}</h3>
-        <div class="article-row">
-            <div class="para-group">
+    <div>
+        <h3 class="title text-center" v-if="article.title">{{ article.title }}</h3>
+        <div class="row">
+            <div class="para-group" :class="para_height">
                 <p v-for="item in article.paragraph" :key="item.id">{{ item }}</p>
             </div>
-            <div class="img-group" v-if="article.img">
-                <img v-for="i in article.img" :key='i.id' :src="i.src" alt="">
+            <div  :class="'img-group col-xs-3'" v-if="article.img">
+                <img 
+                    v-for="i in article.img" 
+                    :key='i.id' 
+                    :src="i.src"
+                    :alt="i.desc"
+                    :class="'img-responsive'" >
             </div>
         </div>
     </div>
@@ -16,43 +21,24 @@
 export default {
     name: 'Article',
     props: ['article', 'img'],
+    computed: {
+        para_height: function() { 
+            return this.article.img && this.article.img.length ? 'col-xs-9' : 'col-xs-12' 
+        } 
+    },
 }
 </script>
 
 <style scoped>
-    .article-top p {
+    .row {
+        margin: 25px 0px;
+    }
+    .para-group {
+        padding: 10px;
+    } 
+    p {
         text-align: left;
         line-height: 1.5em;
         text-indent: 2em;
     }
-    .article-top p img {
-        text-align: center;
-    }
-    .article-title{
-        display: block;
-        width: 100%;
-        flex: none;
-        margin: auto;
-    }
-    .article-top, .article-row, .img-group {
-        display: flex;
-        flex-flow: row;
-        width: 100%;
-    }
-    .article-top .img-group {
-        align-items: flex-start;
-    }
-    .article-row>div {
-        padding: 20px;
-        padding-left: 20px;
-    }
-    
-    .article-row>div:last-child {
-        padding-left: 20px; 
-    }
-
-    .para-group {
-        padding: 10px;
-    }
-
 </style>

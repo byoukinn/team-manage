@@ -30,7 +30,7 @@
         cursor: pointer;
     }
     .convey-row {
-        margin: 20px 5px;
+        margin: 15px 5px;
     }
     .img-group {
         padding-left: 0px ;
