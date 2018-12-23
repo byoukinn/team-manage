@@ -61,7 +61,7 @@
             }
           }
           // 打印路由配置
-          // console.log(JSON.stringify(this.breadListLast)) 
+          console.log(JSON.stringify(this.breadListLast)) 
         }
       }
     },
