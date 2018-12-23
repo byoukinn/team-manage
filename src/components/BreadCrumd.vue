@@ -17,7 +17,7 @@
     data() {
       return {
         //手动配置项：breadListRelate为路由与面包屑名称对应关系,breadLoadName为面包屑组件路由
-        breadLoadName: '/breadBox',
+        breadLoadName: '/content',
         breadListRelate: [
           {
             path: '01',

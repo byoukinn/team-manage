@@ -18,12 +18,11 @@
     import Panel from '@/components/Panel.vue'
     import Conveyor from '@/components/Conveyor.vue'
     import ConveyorRow from '@/components/Conveyor/ConveyorRow.vue'
-    import pool from '@/config.js'
-
+ 
     export default {
         name: 'Demo',
         data() {
-            return pool.demoData();
+            return this.$store.state.DemoModule
         },
         props: ['list'],
         methods: {

@@ -7,13 +7,13 @@
                             :key="m.id" 
                             :data="m" 
                             :index="i"
-                            @mousedownindex="replaceMember" />
+                            @mousedownindex="replaceProfile" />
                 </Conveyor>
             </Panel>
         </nav>
         <section class="col-xs-9">
             <Panel title='团队简介' more='#'>
-                <Article :article='currentMember.article' />
+                <Article :article='currentProfile' />
             </Panel>
         </section>
     </div>
@@ -25,18 +25,21 @@
     import ConveyorCol from '@/components/Conveyor/ConveyorCol.vue'
 
     import Article from "@/components/Article.vue";
-    import pool from "@/config.js";
-
+ 
     export default {
         name: 'teachers',
         data() {
-            var data = pool.teacherData()
-            data['currentMember'] = data['members'][0]
-            return data
+            return this.$store.state.TeacherModule
+        },
+        created: function() {
+            this.replaceProfile(0)
         },
         methods: {
-            replaceMember(index) {
-                this.currentMember = this.members[index]
+            replaceProfile(index) {
+                this.$store.commit({
+                    type: 'replaceProfile',
+                    index: index,
+                })
             },
         },
         components: {
@@ -79,7 +82,6 @@
 
     .intro-img-group {
         flex-flow: row;
-        /* width: 100%; */
         align-items: flex-start;
     }
 </style>

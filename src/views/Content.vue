@@ -1,5 +1,6 @@
 <template>
     <div class="row">
+        <BreadCrumd class="col-xs-12"></BreadCrumd>
         <div class="col-xs-3 menu-head">
             <TreeMenuItem :menus='menus'></TreeMenuItem>
         </div>
@@ -15,7 +16,8 @@
     import Panel from "@/components/Panel.vue"
     import TreeMenuItem from "@/components/TreeMenu/TreeMenuItem.vue";
     import Article from "@/components/Article.vue"
-
+    import BreadCrumd from '../components/BreadCrumd.vue';
+    
     export default {
         data() {
             return {
@@ -29,7 +31,8 @@
         components: {
             TreeMenuItem,
             Article,
-            Panel
+            Panel,
+            BreadCrumd,
         },
         methods: {
             log: function() {

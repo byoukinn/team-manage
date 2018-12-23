@@ -34,12 +34,11 @@
     import Sidebar from '@/components/Sidebar.vue'
     import Conveyor from '@/components/Conveyor.vue'
     import ConveyorRow from '@/components/Conveyor/ConveyorRow.vue'
-    import pool from '@/config.js'
-
+ 
     export default {
         name: 'home',
         data() {
-            return pool.homeData()
+            return this.$store.state.HomeModule
         },
         components: {
             Sidebar,
@@ -63,3 +62,5 @@
     }
 
 </style>
+
+

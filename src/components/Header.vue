@@ -1,11 +1,11 @@
 <template>
     <div class="row header">
-        <div class="col-xs-12">
+        <router-link class="col-xs-12" to="/">
             <img class="logo pull-left" src="@/assets/logo.png" alt="广东农工商职业技术学院">
             <div class="pull-left banner">
                 <p v-for="item in bannerContent" :key="item.id">{{ item }}</p>
             </div>
-        </div>
+        </router-link>
     </div>
 </template>
 
