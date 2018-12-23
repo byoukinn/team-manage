@@ -77,15 +77,15 @@
     }
   };
 </script>
-<style lang="scss" scoped>
+
+<style scoped>
   .breadEval {
     position: relative;
     font-size: 14px;
-    height: 100%;
-    background: #F3F7FD;
-    .breadTitle{
-      padding: 20px 30px;
-      background: #fff;
-    }
+    height: 100%; 
+  }
+
+  .breadEval .breadTitle{
+    padding: 15px 30px;
   }
 </style>
