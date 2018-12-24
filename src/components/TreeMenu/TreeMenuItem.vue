@@ -14,8 +14,8 @@
                     </div>
                 </div>
                 <transition name="fade">
-                    <div class="heading-children" v-show="menu.isExpanded" v-if="menu.subMenu">
-                        <TreeMenuItem :menus='menu.subMenu' v-bind="$attrs" v-on="$listeners"></TreeMenuItem>
+                    <div class="heading-children" v-show="menu.isExpanded" v-if="menu.children">
+                        <TreeMenuItem :menus='menu.children' v-bind="$attrs" v-on="$listeners"></TreeMenuItem>
                     </div>
                 </transition>
             </div>
@@ -29,7 +29,7 @@
         props: ["menus"],
         created() {
             this.$store.commit("firstInit", {
-                url: this.$route.path
+                path: this.$route.path
             });
         },
         methods: {

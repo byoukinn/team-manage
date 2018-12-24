@@ -1,15 +1,15 @@
 <template>
     <div class="row navbar">
-        <ul class="col-xs-12 nav" >
+        <ul class="col-xs-12 nav">
             <li v-for="item in navData" :key="item.id" @mouseover="showsub($event.srcElement)" @mouseout="hidesub($event.srcElement)">
                 <router-link :to="item.path">
-                    {{ item.content }}
+                    {{ item.meta.breadcrumbName }}
                 </router-link>
-                <ul class="navbar-inner-ul" v-if="item.sub" @mouseover="showsub($event.srcElement)">
-                    <div v-for="subitem in item.sub" :key="subitem.id">
+                <ul class="navbar-inner-ul" v-if="item.children" @mouseover="showsub($event.srcElement)">
+                    <div v-for="subitem in item.children" :key="subitem.id">
                         <li>
                             <router-link :to="subitem.path">
-                                {{ subitem.content }}
+                                {{ subitem.meta.breadcrumbName }}
                             </router-link>
                         </li>
                     </div>
@@ -22,9 +22,76 @@
 <script>
     export default {
         name: 'navbar',
-        props: [
-            'navData'
-        ],
+        data() {
+            // 导航栏数据
+            return {
+                navData: [
+                    /**
+                     * 一个对象一个 [li 选项]
+                     * content 选项名称
+                     * path 跳转路径 （需配置路由）
+                     * children 子选项集合 内部存储子选项对象 
+                     * children 对象参数参考content 和 path
+                     */
+                    {
+                        meta: {
+                            breadcrumbName: '首页'
+                        },
+                        path: '/',
+                        children: [],
+                    },
+                    {
+                        meta: {
+                            breadcrumbName: '成果展示'
+                        },
+                        path: '/teachers',
+                        children: [{
+                            meta: {
+                                breadcrumbName: '测试选项'
+                            },
+                            path: '/',
+                        }, ],
+                    },
+                    {
+                        meta: {
+                            breadcrumbName: '成果展示'
+                        },
+                        path: '/content',
+                        children: [{
+                                meta: {
+                                    breadcrumbName: '测试选项'
+                                },
+                                path: '/',
+                            },
+                            {
+                                meta: {
+                                    breadcrumbName: '测试选项'
+                                },
+                                path: '/',
+                            },
+                            {
+                                meta: {
+                                    breadcrumbName: '测试选项'
+                                },
+                                path: '/',
+                            },
+                        ],
+                    },
+                    {
+                        meta: {
+                            breadcrumbName: '成果展示'
+                        },
+                        path: '/tree',
+                        children: [{
+                            meta: {
+                                breadcrumbName: '速度快'
+                            },
+                            path: '/',
+                        }, ],
+                    },
+                ],
+            }
+        },
         methods: {
             showsub: function (li) {
                 var submenu = li.nextSibling;
@@ -111,6 +178,6 @@
     }
 
     .navbar-inner-ul {
-        padding-left: 0px;    
+        padding-left: 0px;
     }
 </style>

@@ -18,14 +18,19 @@
     data() {
       return {
         title: '您的位置：', // 页面标题
-        brumblist: '' // 路由集合
+        brumblist: [] // 路由集合
       }
     },
     props: ['separator'],
     methods: {
       getBreadcrumb() {
-        this.brumblist.push()
-        this.brumblist = this.$route.matched
+        this.brumblist.push({
+            meta: {
+              breadcrumbName: '首页'
+            },
+            path: '/',
+          })
+        this.brumblist = this.brumblist.concat(this.$route.matched)
         // this.$route.matched.forEach((item, index) => {
         //   // 判断父级路由是否为空字符串或者meta是否为首页,直接复写路径到根目录
         //   // 后面的就是判断路由和当前遍历的项目是否一致,是的话把标题的值给上

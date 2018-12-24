@@ -6,10 +6,10 @@
  * 只有当type为button时: 
  * isExpanded: true为展开，false为未展开
  * isSelected: 正在选择时为true，否则为false
- * subMenu: 子菜单
+ * children: 子菜单
  * 此时link失效
  * 当type为link时
- * url: 路由的路径
+ * path: 路由的路径
  */
 // let menu = [
 //     [],
@@ -23,12 +23,12 @@ let menus = [
         type: "button",
         isExpanded: false,
         isSelected: false,
-        subMenu: [
+        children: [
             {
                 level: 2,
                 name: '快速上手',
                 type: "link",
-                url: "/content/1"
+                path: "/content/1"
             },
             {
                 level: 2,
@@ -36,48 +36,48 @@ let menus = [
                 type: "button",
                 isExpanded: false,
                 isSelected: false,
-                subMenu: [
+                children: [
                     {
                         level: 3,
                         name: '简介',
                         type: "link",
-                        url: "/content/1"
+                        path: "/content/1"
                     },
                     {
                         level: 3,
                         name: '英雄编辑器',
                         type: "link",
-                        url: "/content/1"
+                        path: "/content/1"
                     },
                     {
                         level: 3,
                         name: '主从结构',
                         type: "link",
-                        url: "/content/1"
+                        path: "/content/1"
                     },
                     {
                         level: 3,
                         name: '多个组件',
                         type: "link",
-                        url: "/content/1"
+                        path: "/content/1"
                     },
                     {
                         level: 3,
                         name: '服务',
                         type: "link",
-                        url: "/content/1"
+                        path: "/content/1"
                     },
                     {
                         level: 3,
                         name: '路由',
                         type: "link",
-                        url: "/content/1"
+                        path: "/content/1"
                     },
                     {
                         level: 3,
                         name: 'HTTP',
                         type: "link",
-                        url: "/content/1"
+                        path: "/content/1"
                     },
                 ]
             },

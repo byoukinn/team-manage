@@ -66,5 +66,6 @@ export default new Router({
         },
       ],
     },
+    // this.$store.state.MenuModule.
   ]
 })
