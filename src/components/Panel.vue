@@ -1,11 +1,11 @@
 <template>
     <div class="panel-top">
         <div class="z-idx-2 ">
-            <div v-if="title" class="col-xs-12 panel-row">
-                <div class="col-xs-6 panel-title">
+            <div v-if="title" class="row panel-row">
+                <div class="col-xs-9 panel-title">
                     <h3>{{ title }}</h3>
                 </div>
-                <a class="col-xs-6 panel-more text-right" v-if="more" :href="more">
+                <a class="col-xs-3 panel-more text-right" v-if="more" :href="more">
                     more 
                 </a>
             </div>
