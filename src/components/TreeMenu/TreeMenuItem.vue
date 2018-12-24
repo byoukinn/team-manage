@@ -1,21 +1,22 @@
 <template>
     <div class="TreeMenuItem">
         <div class="level" :class="'level-'+ menu.level" v-for="menu in menus" :key="menu.id">
-            <div v-if="menu.type === 'link'" @click="showArt($event.target)">
-                <a href="javascript:void(0)" class="link" @click.native="toggle(menu)">{{menu.name}}</a>
+            <div v-if="menu.type === 'link'" > 
+                <!-- @click="jump($event.target)" -->
+                <router-link href="javascript:void(0)" class="link"  :to="'/content/' + menu.name"  @click.native="toggle(menu)">{{menu.meta.breadcrumbName}}</router-link>
             </div>
             <div v-if="menu.type === 'button'">
                 <div class="button heading" :class="{selected: menu.isSelected,expand:menu.isExpanded}" @click="toggle(menu)">
-                    {{menu.name}}
+                    {{menu.meta.breadcrumbName}}
                     <div class="icon">
                         <svg xmlns="http://www.w3.org/2000/svg" focusable="false" viewBox="0 0 24 24">
-                            <path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z "></path>
+                            <path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z " />
                         </svg>
                     </div>
                 </div>
                 <transition name="fade">
                     <div class="heading-children" v-show="menu.isExpanded" v-if="menu.children">
-                        <TreeMenuItem :menus='menu.children' v-bind="$attrs" v-on="$listeners"></TreeMenuItem>
+                        <TreeMenuItem :menus='menu.children' v-bind="$attrs" v-on="$listeners" />
                     </div>
                 </transition>
             </div>
@@ -38,7 +39,9 @@
                     menu
                 });
             },
-            showArt(target) {
+            jump(target) {
+                // FIXME： 加入了东西
+                console.log('ex114', target.target.text)
                 this.$store.commit("getTarget", {
                     target
                 });

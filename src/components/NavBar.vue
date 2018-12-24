@@ -42,52 +42,40 @@
                     },
                     {
                         meta: {
-                            breadcrumbName: '成果展示'
+                            breadcrumbName: '老师页'
                         },
                         path: '/teachers',
                         children: [{
                             meta: {
-                                breadcrumbName: '测试选项'
+                                breadcrumbName: '测试页'
                             },
-                            path: '/',
+                            path: '/demo',
                         }, ],
                     },
                     {
                         meta: {
-                            breadcrumbName: '成果展示'
+                            breadcrumbName: '内容页'
                         },
                         path: '/content',
                         children: [{
                                 meta: {
-                                    breadcrumbName: '测试选项'
+                                    breadcrumbName: '关于页'
+                                },
+                                path: '/about',
+                            },
+                            {
+                                meta: {
+                                    breadcrumbName: '首页'
                                 },
                                 path: '/',
                             },
                             {
                                 meta: {
-                                    breadcrumbName: '测试选项'
-                                },
-                                path: '/',
-                            },
-                            {
-                                meta: {
-                                    breadcrumbName: '测试选项'
+                                    breadcrumbName: '首页'
                                 },
                                 path: '/',
                             },
                         ],
-                    },
-                    {
-                        meta: {
-                            breadcrumbName: '成果展示'
-                        },
-                        path: '/tree',
-                        children: [{
-                            meta: {
-                                breadcrumbName: '速度快'
-                            },
-                            path: '/',
-                        }, ],
                     },
                 ],
             }

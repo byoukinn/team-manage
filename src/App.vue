@@ -33,72 +33,7 @@
           '© 2018 广东农工商职业技术学院 计算机学院 ｜ 技术支持：ITeam基地 软件众创工作室',
           '地址：广东省广州市广东农工商职业技术学院增城校区',
         ],
-        // 导航栏数据
-        navData: [
-          /**
-           * 一个对象一个 [li 选项]
-           * content 选项名称
-           * path 跳转路径 （需配置路由）
-           * children 子选项集合 内部存储子选项对象 
-           * children 对象参数参考content 和 path
-           */
-          {
-            meta: {
-              breadcrumbName: '首页'
-            },
-            path: '/',
-            children: [],
-          },
-          {
-            meta: {
-              breadcrumbName: '成果展示'
-            },
-            path: '/teachers',
-            children: [{
-              meta: {
-                breadcrumbName: '测试选项'
-              },
-              path: '/',
-            }, ],
-          },
-          {
-            meta: {
-              breadcrumbName: '成果展示'
-            },
-            path: '/content',
-            children: [{
-                meta: {
-                  breadcrumbName: '测试选项'
-                },
-                path: '/',
-              },
-              {
-                meta: {
-                  breadcrumbName: '测试选项'
-                },
-                path: '/',
-              },
-              {
-                meta: {
-                  breadcrumbName: '测试选项'
-                },
-                path: '/',
-              },
-            ],
-          },
-          {
-            meta: {
-              breadcrumbName: '成果展示'
-            },
-            path: '/tree',
-            children: [{
-              meta: {
-                breadcrumbName: '速度快'
-              },
-              path: '/',
-            }, ],
-          },
-        ],
+        
         // 横幅文字
         bannerContent: [
           '专业社团-工作室-创业公司"育人平台的探索与实践',

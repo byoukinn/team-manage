@@ -1,7 +1,7 @@
 /**
  * 可拓展的多级菜单
  * level: 层级
- * name: 显示的标题
+ * meta:  显示的标题
  * type: 'button' 可下拉类型, 'link' 链接路由
  * 只有当type为button时: 
  * isExpanded: true为展开，false为未展开
@@ -15,95 +15,134 @@
 //     [],
 //     [],
 // ]
+import ContentView from '@/views/ContentView.vue'
 
-let menus = [
-    {
+let menus = [{
         level: 1,
-        name: '成果展示',
         type: "button",
         isExpanded: false,
         isSelected: false,
-        children: [
-            {
+        path: "/content",
+        name: 'content',
+        component: ContentView,
+        meta: {
+            breadcrumbName: '成果展示'
+        },
+        children: [{
                 level: 2,
-                name: '快速上手',
                 type: "link",
-                path: "/content/1"
+                path: "/content/getting-start",
+                component: ContentView,
+                name: 'getting-start',
+                meta: {
+                    breadcrumbName: '快速上手'
+                },
             },
             {
                 level: 2,
-                name: '教程',
                 type: "button",
                 isExpanded: false,
+                path: "/content/tutorial",
+                name: 'tutorial',
+                meta: {
+                    breadcrumbName: '教程'
+                },
                 isSelected: false,
-                children: [
-                    {
+                children: [{
                         level: 3,
-                        name: '简介',
                         type: "link",
-                        path: "/content/1"
+                        path: "/content/overview",
+                        name: 'overview',
+                        component: ContentView,
+                        meta: {
+                            breadcrumbName: '简介'
+                        },
                     },
                     {
                         level: 3,
-                        name: '英雄编辑器',
                         type: "link",
-                        path: "/content/1"
+                        path: "/content/hero-editor",
+                        name: "hero-editor",
+                        component: ContentView,
+                        meta: {
+                            breadcrumbName: '英雄编辑器'
+                        },
                     },
                     {
                         level: 3,
-                        name: '主从结构',
                         type: "link",
-                        path: "/content/1"
+                        path: "/content/structure",
+                        name: "structure",
+                        component: ContentView,
+                        meta: {
+                            breadcrumbName: '主从结构'
+                        },
                     },
                     {
                         level: 3,
-                        name: '多个组件',
                         type: "link",
-                        path: "/content/1"
+                        path: "/content/components",
+                        name: "components",
+                        component: ContentView,
+                        meta: {
+                            breadcrumbName: '多个组件'
+                        },
                     },
                     {
                         level: 3,
-                        name: '服务',
                         type: "link",
-                        path: "/content/1"
+                        path: "/content/service",
+                        name: "service",
+                        component: ContentView,
+                        meta: {
+                            breadcrumbName: '服务'
+                        },
                     },
                     {
                         level: 3,
-                        name: '路由',
                         type: "link",
-                        path: "/content/1"
+                        path: "/content/router",
+                        name: "router",
+                        component: ContentView,
+                        meta: {
+                            breadcrumbName: '路由'
+                        },
                     },
                     {
                         level: 3,
-                        name: 'HTTP',
                         type: "link",
-                        path: "/content/1"
+                        path: "/content/http",
+                        name: "http",
+                        component: ContentView,
+                        meta: {
+                            breadcrumbName: 'HTTP'
+                        },
                     },
                 ]
             },
         ],
     }
-    
+
 ];
 
 let contents = {
-    '成果展示': {
-        title: '成果展示',
+    "overview": {
+        title: '简介',
         paragraph: [
-            "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            "关于简介的页面 in contents"
         ]
     },
-    '快速上手': {
+    "getting-start": {
         title: '快速上手',
-        paragraph: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        paragraph: ["关于快速上手的页面", "line 2 in contents"]
     },
-    '路由': {
+    'router': {
         title: '路由',
-        paragraph: "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        paragraph: ["关于路由的页面 in contents"]
     },
 }
-    
-let flag = menus[0].name;
+
+let flag = menus[0].meta.breadcrumbName
 let content = contents[flag];
 
 

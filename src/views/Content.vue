@@ -1,28 +1,24 @@
 <template>
     <div class="row">
-        <BreadCrumd class="col-xs-12"></BreadCrumd>
+        <BreadCrumb class="col-xs-12"></BreadCrumb>
         <div class="col-xs-3 menu-head">
             <TreeMenuItem :menus='menus'></TreeMenuItem>
         </div>
         <section class="col-xs-9">
-            <Panel>
-                <Article :article='content' />
-            </Panel>
+            <router-view></router-view>
         </section>
     </div>
 </template>
 
 <script>
-    import Panel from "@/components/Panel.vue"
     import TreeMenuItem from "@/components/TreeMenu/TreeMenuItem.vue";
-    import Article from "@/components/Article.vue"
-    import BreadCrumd from '../components/BreadCrumd.vue';
+    import BreadCrumb from '../components/BreadCrumb.vue';
     
     export default {
         data() {
             return {
-                menus: this.$store.state.MenusModule.menus,
-                content: this.$store.state.MenusModule.content,
+                menus: this.$store.state.MenuModule.menus,
+                content: this.$store.state.MenuModule.content,
             };
         },
         created(){
@@ -30,16 +26,15 @@
         },
         components: {
             TreeMenuItem,
-            Article,
-            Panel,
-            BreadCrumd,
+            BreadCrumb,
         },
         methods: {
             log: function() {
-                this.content = this.$store.state.MenusModule.content;
+                this.content = this.$store.state.MenuModule.content;
                 setTimeout(this.log, 1)
             }
-        }
+        },
+        
     }
 </script>
 

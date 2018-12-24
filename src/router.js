@@ -1,13 +1,29 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
+import store from '@/store'
+console.log('危险！ex12', store.state.MenuModule.menus[0])
+
+function getChildren() {
+  var root = store.state.MenuModule.menus[0]
+  var arr = []
+  var queue = [root]
+  while (queue.length) {
+      var s = queue.shift()
+      arr.push(s)
+      var children = s.children
+      queue.concat(children)
+  }
+  return arr
+}
 
 Vue.use(Router)
 
 export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes: [{
+  routes: [
+    {
       path: '/',
       name: 'home',
       component: Home,
@@ -47,25 +63,7 @@ export default new Router({
       meta: {
         breadcrumbName: "成果展示",
       },
-      children: [
-        {
-          path: '/content/1',
-          name: 'content1',
-          component: () => import('./views/Content.vue'),
-          meta: {
-            breadcrumbName: "成果展示内容页1",
-          },
-        },
-        {
-          path: '/content/2',
-          name: 'content1',
-          component: () => import('./views/Content.vue'),
-          meta: {
-            breadcrumbName: "成果展示内容页2",
-          },
-        },
-      ],
+      children: getChildren(),
     },
-    // this.$store.state.MenuModule.
   ]
 })

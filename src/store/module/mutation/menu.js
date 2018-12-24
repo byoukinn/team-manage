@@ -10,7 +10,7 @@ function setExpand(source, path) {
                 source[i].isExpanded = true; // 设置为展开
                 startExpand.push(source[i]);
                 // 递归下一级菜单，以此类推
-                setExpand(source[i].subMenu, path);
+                setExpand(source[i].children, path);
             }
             break;
         }
@@ -37,6 +37,7 @@ export default {
         setExpand(state.menus, payload.path);
     },
     getTarget(state, payload) {
+        console.log('payload', payload.path)
         state.content = state.contents[payload.target.text];
     },
 }
