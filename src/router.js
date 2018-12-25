@@ -9,10 +9,16 @@ function getChildren() {
   var arr = []
   var queue = root.slice() // 必须是复制的，否则影响到原配置文件
   while (queue.length) {
-    var e = queue.shift()
-    arr.push(e)
-    var children = e.children
+    var pop = queue.shift()
+    var children = pop.children
     children ? queue = queue.concat(children) : queue
+    // 放入arr即放入routes的children中
+    var e = Object.assign({}, pop)
+    console.log('type', e.type, e)
+    if (e.type === 'button') {
+      e.children = []
+    }
+    arr.push(e)
   }
   return arr
 }

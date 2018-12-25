@@ -6,7 +6,7 @@
                     {{ item.meta.breadcrumbName }}
                 </router-link>
                 <ul class="navbar-inner-ul" v-if="item.children" @mouseover="showsub($event.srcElement)">
-                    <div v-for="subitem in item.children" :key="subitem.id">
+                    <div v-if="subitem.level === 2" v-for="subitem in item.children" :key="subitem.id">
                         <li>
                             <router-link :to="subitem.path">
                                 {{ subitem.meta.breadcrumbName }}

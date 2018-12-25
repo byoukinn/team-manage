@@ -16,6 +16,7 @@
     
     export default {
         data() {
+            console.log('menus', this.$store.state.MenuModule.menus)
             console.log('routes', this.$router.options.routes)
             return {
                 menus: this.$store.state.MenuModule.menus,

@@ -31,20 +31,20 @@
         created() {
             this.$store.commit("firstInit", {
                 path: this.$route.path
-            });
+            })
         },
         methods: {
             toggle(menu) {
                 this.$store.commit("findParents", {
                     menu
-                });
+                })
             },
             jump(target) {
                 // FIXME： 加入了东西
                 console.log('ex114', target.target.text)
                 this.$store.commit("getTarget", {
                     target
-                });
+                })
             }
         }
     };

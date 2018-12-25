@@ -28,7 +28,8 @@ let menus = [{
         meta: {
             breadcrumbName: '成果展示'
         },
-        children: [{
+        children: [
+            {
                 level: 2,
                 type: "link",
                 path: "/content/getting-start",
@@ -57,6 +58,37 @@ let menus = [{
                         meta: {
                             breadcrumbName: '简介'
                         },
+                    },
+                    {
+                        level: 3,
+                        type: "button",
+                        isExpanded: false,
+                        path: "/content/scale",
+                        name: 'scale',
+                        meta: {
+                            breadcrumbName: '规模'
+                        },
+                        isSelected: false,
+                        children: [{
+                            level: 4,
+                            type: "link",
+                            path: "/content/chapter1",
+                            name: "chapter",
+                            component: ContentView,
+                            meta: {
+                                breadcrumbName: '2.1 章节1'
+                            },
+                        },
+                        {
+                            level: 4,
+                            type: "link",
+                            path: "/content/chapter2",
+                            name: "chapter2",
+                            component: ContentView,
+                            meta: {
+                                breadcrumbName: '2.1 章节2'
+                            },
+                        }],
                     },
                     {
                         level: 3,
