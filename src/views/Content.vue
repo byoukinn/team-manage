@@ -16,25 +16,17 @@
     
     export default {
         data() {
+            console.log('routes', this.$router.options.routes)
             return {
                 menus: this.$store.state.MenuModule.menus,
                 content: this.$store.state.MenuModule.content,
             };
         },
-        created(){
-            this.log();
-        },
         components: {
             TreeMenuItem,
             BreadCrumb,
         },
-        methods: {
-            log: function() {
-                this.content = this.$store.state.MenuModule.content;
-                setTimeout(this.log, 1)
-            }
-        },
-        
+         
     }
 </script>
 

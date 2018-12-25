@@ -5,14 +5,14 @@ import store from '@/store'
 console.log('危险！ex12', store.state.MenuModule.menus[0])
 
 function getChildren() {
-  var root = store.state.MenuModule.menus[0]
+  var root = store.state.MenuModule.menus[0].children
   var arr = []
-  var queue = [root]
+  var queue = root.slice() // 必须是复制的，否则影响到原配置文件
   while (queue.length) {
-      var s = queue.shift()
-      arr.push(s)
-      var children = s.children
-      queue.concat(children)
+    var e = queue.shift()
+    arr.push(e)
+    var children = e.children
+    children ? queue = queue.concat(children) : queue
   }
   return arr
 }
@@ -27,6 +27,7 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Home,
+      children: [],
       meta: {
         breadcrumbName: "首页",
       },
@@ -34,6 +35,7 @@ export default new Router({
     {
       path: '/about',
       name: 'about',
+      children: [],
       component: () => import('./views/About.vue'),
       meta: {
         breadcrumbName: "关于",
@@ -42,6 +44,7 @@ export default new Router({
     {
       path: '/demo',
       name: 'demo',
+      children: [],
       component: () => import('./views/Demo.vue'),
       meta: {
         breadcrumbName: "测试",
@@ -50,6 +53,7 @@ export default new Router({
     {
       path: '/teachers',
       name: 'teachers',
+      children: [],
       component: () => import('./views/Teachers.vue'),
       meta: {
         breadcrumbName: "骨干师资",
@@ -59,9 +63,10 @@ export default new Router({
     {
       path: '/content',
       name: 'content',
+      isDropdown: true,
       component: () => import('./views/Content.vue'),
       meta: {
-        breadcrumbName: "成果展示",
+        breadcrumbName: "成果展示在router",
       },
       children: getChildren(),
     },

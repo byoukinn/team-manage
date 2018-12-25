@@ -1,7 +1,7 @@
 <template>
     <div class="row navbar">
         <ul class="col-xs-12 nav">
-            <li v-for="item in navData" :key="item.id" @mouseover="showsub($event.srcElement)" @mouseout="hidesub($event.srcElement)">
+            <li v-for="item in navs" :key="item.id" @mouseover="showsub($event.srcElement)" @mouseout="hidesub($event.srcElement)">
                 <router-link :to="item.path">
                     {{ item.meta.breadcrumbName }}
                 </router-link>
@@ -25,59 +25,7 @@
         data() {
             // 导航栏数据
             return {
-                navData: [
-                    /**
-                     * 一个对象一个 [li 选项]
-                     * content 选项名称
-                     * path 跳转路径 （需配置路由）
-                     * children 子选项集合 内部存储子选项对象 
-                     * children 对象参数参考content 和 path
-                     */
-                    {
-                        meta: {
-                            breadcrumbName: '首页'
-                        },
-                        path: '/',
-                        children: [],
-                    },
-                    {
-                        meta: {
-                            breadcrumbName: '老师页'
-                        },
-                        path: '/teachers',
-                        children: [{
-                            meta: {
-                                breadcrumbName: '测试页'
-                            },
-                            path: '/demo',
-                        }, ],
-                    },
-                    {
-                        meta: {
-                            breadcrumbName: '内容页'
-                        },
-                        path: '/content',
-                        children: [{
-                                meta: {
-                                    breadcrumbName: '关于页'
-                                },
-                                path: '/about',
-                            },
-                            {
-                                meta: {
-                                    breadcrumbName: '首页'
-                                },
-                                path: '/',
-                            },
-                            {
-                                meta: {
-                                    breadcrumbName: '首页'
-                                },
-                                path: '/',
-                            },
-                        ],
-                    },
-                ],
+                navs: this.$router.options.routes
             }
         },
         methods: {

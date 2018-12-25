@@ -2,7 +2,6 @@
     <div class="TreeMenuItem">
         <div class="level" :class="'level-'+ menu.level" v-for="menu in menus" :key="menu.id">
             <div v-if="menu.type === 'link'" > 
-                <!-- @click="jump($event.target)" -->
                 <router-link href="javascript:void(0)" class="link"  :to="'/content/' + menu.name"  @click.native="toggle(menu)">{{menu.meta.breadcrumbName}}</router-link>
             </div>
             <div v-if="menu.type === 'button'">
@@ -15,7 +14,8 @@
                     </div>
                 </div>
                 <transition name="fade">
-                    <div class="heading-children" v-show="menu.isExpanded" v-if="menu.children">
+                    <div class="heading-children" v-show="menu.isExpanded" >
+                        <!-- v-if="menu.children" -->
                         <TreeMenuItem :menus='menu.children' v-bind="$attrs" v-on="$listeners" />
                     </div>
                 </transition>

@@ -23,6 +23,7 @@
             getArticle: function() {
                 var articles = this.$store.state.MenuModule.contents
                 var name = this.$route.name
+                console.log('arts', articles)
                 return articles[name]
             }  
         },

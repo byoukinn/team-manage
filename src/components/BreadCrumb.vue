@@ -31,7 +31,7 @@
         }]
         // 由于数据配置问题，在开头多了一个/content，尝试把他剔除了。
         var r = this.$route.matched
-        var append = r.slice(1, r.length)
+        var append = r.slice()
         this.brumblist = list.concat(append)
       }
     },
